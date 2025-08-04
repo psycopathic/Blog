@@ -1,5 +1,10 @@
 import express from 'express';
 import userRoutes from './routes/userRoutes.js';
+import { connectDB } from './lib/db.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -13,4 +18,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
+    connectDB();
 });
